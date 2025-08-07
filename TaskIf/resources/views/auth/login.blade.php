@@ -1,98 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <title>Login | Hyper Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- CSS -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Halaman Login Admin">
+    <meta name="author" content="">
+
+    <title>Login - Admin</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="loading authentication-bg" data-layout-config='{"darkMode":false}'>
+<body class="bg-gradient-primary">
 
-    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xxl-4 col-lg-5">
-                    <div class="card">
+    <div class="container">
+        <div class="row justify-content-center">
 
-                        <!-- Logo -->
-                        <div class="card-header pt-4 pb-4 text-center bg-primary">
-                            <a href="#">
-                                <span><img src="{{ asset('assets/images/logo.png') }}" alt="" height="18"></span>
-                            </a>
-                        </div>
+            <div class="col-xl-10 col-lg-12 col-md-9">
 
-                        <div class="card-body p-4">
-                            <div class="text-center w-75 m-auto">
-                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
-                                <p class="text-muted mb-4">Enter your email and password to access admin panel.</p>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center">
+                                <img src="{{ asset('assets/img/logo-long.png') }}" class="img-fluid p-4 ms-5" style="max-height: 400px;">
                             </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
 
-                            <form method="POST" action="{{ route('login') }}">
-                                @csrf
+                                    <form method="POST" action="{{ route('login') }}" class="user">
+                                        @csrf
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email address</label>
-                                    <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" id="email" required value="{{ old('email') }}" autofocus placeholder="Enter your email">
-                                    @error('email')
-                                        <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <a href="{{ route('password.request') }}" class="text-muted float-end"><small>Forgot your password?</small></a>
-                                    <label for="password" class="form-label">Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter your password" required>
-                                        <div class="input-group-text" data-password="false">
-                                            <span class="password-eye"></span>
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" value="{{ old('email') }}"
+                                                class="form-control form-control-user @error('email') is-invalid @enderror"
+                                                placeholder="Enter Email Address..." required autofocus>
+                                            @error('email')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
                                         </div>
+
+                                        <div class="form-group position-relative">
+                                            <input type="password" name="password" id="password"
+                                                class="form-control form-control-user @error('password') is-invalid @enderror"
+                                                placeholder="Password" required>
+                                            <span toggle="#password" class="fas fa-eye toggle-password position-absolute" style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;"></span>
+                                            @error('password')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" name="remember" class="custom-control-input"
+                                                    id="customCheck" {{ old('remember') ? 'checked' : '' }}>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
+                                    </form>
+
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
                                     </div>
-                                    @error('password')
-                                        <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="remember">Remember me</label>
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('register') }}">Create an Account!</a>
                                     </div>
                                 </div>
-
-                                <div class="mb-3 mb-0 text-center">
-                                    <button class="btn btn-primary" type="submit"> Log In </button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                        <!-- end card-body -->
+                        <!-- End Nested Row -->
                     </div>
-                    <!-- end card -->
+                </div>
 
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <p class="text-muted">Don't have an account?
-                                <a href="{{ route('register') }}" class="text-muted ms-1"><b>Sign Up</b></a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div> <!-- end col -->
             </div>
-            <!-- end row -->
+
         </div>
-        <!-- end container -->
     </div>
 
-    <footer class="footer footer-alt">
-        2022 - <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
-    </footer>
+    <!-- JS Files -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const togglePassword = document.querySelector('.toggle-password');
+            const passwordInput = document.querySelector('#password');
 
-    <!-- JS -->
-    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+    </script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 </body>
+
 </html>

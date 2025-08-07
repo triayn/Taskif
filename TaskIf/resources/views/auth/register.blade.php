@@ -3,122 +3,117 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Register | Hyper Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSS -->
-    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <!-- Fonts & CSS -->
+    <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+    <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="loading authentication-bg" data-layout-config='{"darkMode":false}'>
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="row justify-content-center">
 
-    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xxl-4 col-lg-5">
-                    <div class="card">
-                        <!-- Logo-->
-                        <div class="card-header pt-4 pb-4 text-center bg-primary">
-                            <a href="#">
-                                <span><img src="{{ asset('assets/images/logo.png') }}" alt="" height="18"></span>
-                            </a>
-                        </div>
-
-                        <div class="card-body p-4">
-
-                            <div class="text-center w-75 m-auto">
-                                <h4 class="text-dark-50 text-center mt-0 fw-bold">Free Sign Up</h4>
-                                <p class="text-muted mb-4">Create your account, it takes less than a minute.</p>
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center">
+                                <img src="{{ asset('assets/img/logo-long.png') }}" class="img-fluid p-4 ms-5" style="max-height: 400px;">
                             </div>
-
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
-
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Full Name</label>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter your name">
-                                    @error('name')
-                                    <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="phone_number" class="form-label">Phone Number</label>
-                                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror"
-                                        name="phone_number" value="{{ old('phone_number') }}" required placeholder="Enter your phone number">
-                                    @error('phone_number')
-                                    <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email address</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
-                                    @error('email')
-                                    <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="password" name="password"
-                                            class="form-control @error('password') is-invalid @enderror"
-                                            placeholder="Enter your password" required autocomplete="new-password">
-                                        <div class="input-group-text" data-password="false">
-                                            <span class="password-eye"></span>
-                                        </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                                     </div>
-                                    @error('password')
-                                    <div class="text-danger mt-1"><small>{{ $message }}</small></div>
-                                    @enderror
-                                </div>
+                                    <form method="POST" action="{{ route('register') }}" class="user">
+                                        @csrf
 
-                                <div class="mb-3">
-                                    <label for="password-confirm" class="form-label">Confirm Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input type="password" id="password-confirm" name="password_confirmation"
-                                            class="form-control"
-                                            placeholder="Repeat your password" required autocomplete="new-password">
-                                        <div class="input-group-text" data-password="false">
-                                            <span class="password-eye"></span>
+                                        <div class="form-group">
+                                            <input id="name" type="text" name="name"
+                                                class="form-control form-control-user @error('name') is-invalid @enderror"
+                                                placeholder="Full Name" value="{{ old('name') }}" required autofocus>
+                                            @error('name')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
                                         </div>
+
+                                        <div class="form-group">
+                                            <input id="phone_number" type="text" name="phone_number"
+                                                class="form-control form-control-user @error('phone_number') is-invalid @enderror"
+                                                placeholder="Phone Number" value="{{ old('phone_number') }}" required>
+                                            @error('phone_number')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input id="email" type="email" name="email"
+                                                class="form-control form-control-user @error('email') is-invalid @enderror"
+                                                placeholder="Email Address" value="{{ old('email') }}" required>
+                                            @error('email')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group position-relative">
+                                            <input type="password" id="password" name="password"
+                                                class="form-control form-control-user @error('password') is-invalid @enderror"
+                                                placeholder="Password" required>
+                                            <span toggle="#password" class="fas fa-eye toggle-password position-absolute" style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;"></span>
+                                            @error('password')
+                                            <div class="text-danger mt-1"><small>{{ $message }}</small></div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group position-relative">
+                                            <input type="password" id="password-confirm" name="password_confirmation"
+                                                class="form-control form-control-user"
+                                                placeholder="Confirm Password" required>
+                                            <span toggle="#password-confirm" class="fas fa-eye toggle-password position-absolute" style="top: 50%; right: 15px; transform: translateY(-50%); cursor: pointer;"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Register Account
+                                        </button>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{{ route('login') }}">Already have an account? Login!</a>
                                     </div>
                                 </div>
-
-                                <div class="mb-3 text-center">
-                                    <button class="btn btn-primary" type="submit">Sign Up</button>
-                                </div>
-
-                            </form>
-                        </div>
+                            </div>
+                        </div> <!-- End Nested Row -->
                     </div>
-
-                    <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <p class="text-muted">Already have an account?
-                                <a href="{{ route('login') }}" class="text-muted ms-1"><b>Log In</b></a>
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+
         </div>
     </div>
 
-    <footer class="footer footer-alt">
-        2018 - <script>
-            document.write(new Date().getFullYear())
-        </script> © Hyper - Coderthemes.com
-    </footer>
+    <!-- Toggle Password Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".toggle-password").forEach(function (toggle) {
+                toggle.addEventListener("click", function () {
+                    const target = document.querySelector(this.getAttribute("toggle"));
+                    const type = target.getAttribute("type") === "password" ? "text" : "password";
+                    target.setAttribute("type", type);
+                    this.classList.toggle("fa-eye");
+                    this.classList.toggle("fa-eye-slash");
+                });
+            });
+        });
+    </script>
 
-    <!-- JS -->
-    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
 </body>
 
 </html>

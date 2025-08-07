@@ -11,32 +11,49 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-  --blue: #4e73df;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
+  /* Custom palette based on TASKIF logo */
+  --ungu: #867cb3;
+  --kuning: #f6cb48;
+  --hijau: #439751;
+  --biru: #62c1e4;
+  --merah: #dc4f50;
+  --hitam: #000000;
+
+  /* Theme overrides using logo colors */
+  --primary: var(--hijau);       /* tombol utama, navbar, dll */
+  --secondary: var(--ungu);      /* tombol sekunder, badge, border */
+  --success: var(--biru);        /* notifikasi sukses atau info penting */
+  --info: var(--biru);           /* info tambahan */
+  --warning: var(--kuning);      /* peringatan ringan */
+  --danger: var(--merah);        /* error atau konfirmasi negatif */
+  --light: #f9f9f9;              /* latar belakang terang */
+  --dark: var(--hitam);          /* teks kuat / heading */
+
+  /* Optional: untuk menggantikan Bootstrap default */
+  --blue: var(--biru);
+  --indigo: var(--ungu);
+  --purple: var(--ungu);
   --pink: #e83e8c;
-  --red: #e74a3b;
+  --red: var(--merah);
   --orange: #fd7e14;
-  --yellow: #f6c23e;
-  --green: #1cc88a;
+  --yellow: var(--kuning);
+  --green: var(--hijau);
   --teal: #20c9a6;
-  --cyan: #36b9cc;
-  --white: #fff;
-  --gray: #858796;
-  --gray-dark: #5a5c69;
-  --primary: #4e73df;
-  --secondary: #858796;
-  --success: #1cc88a;
-  --info: #36b9cc;
-  --warning: #f6c23e;
-  --danger: #e74a3b;
-  --light: #f8f9fc;
-  --dark: #5a5c69;
+  --cyan: var(--biru);
+
+  /* Grayscale */
+  --white: #ffffff;
+  --gray: #adb5bd;
+  --gray-dark: #495057;
+
+  /* Breakpoints (tetap default) */
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
+
+  /* Fonts */
   --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
