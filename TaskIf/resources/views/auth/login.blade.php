@@ -8,7 +8,7 @@
     <meta name="description" content="Halaman Login Admin">
     <meta name="author" content="">
 
-    <title>Login - Admin</title>
+    <title>Login - TaskIf</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+# Fitur Tugas
+Route::prefix('/tugas')->group(function() {
+    Route::get('/index', [TaskController::class, 'index'])->name('task.index');
+});
+
+# Manajemen Tugas
+Route::prefix('/manajemen')->group(function() {
+    Route::get('/index', [TaskController::class, ''])
+});

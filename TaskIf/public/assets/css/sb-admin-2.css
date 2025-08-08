@@ -6427,6 +6427,18 @@ a.close.disabled {
   vertical-align: text-top !important;
 }
 
+.bg-ungu   { background-color: var(--ungu) !important; }
+
+.bg-kuning { background-color: var(--kuning) !important; }
+
+.bg-hijau  { background-color: var(--hijau) !important; }
+
+.bg-biru   { background-color: var(--biru) !important; }
+
+.bg-merah  { background-color: var(--merah) !important; }
+
+.bg-hitam  { background-color: var(--hitam) !important; }
+
 .bg-primary {
   background-color: #4e73df !important;
 }
