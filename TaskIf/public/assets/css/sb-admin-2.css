@@ -64,6 +64,26 @@
   box-sizing: border-box;
 }
 
+.btn-ungu {
+    display: inline-block; 
+    background-color: var(--ungu);
+    color: #fff;
+    border: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: none; /* supaya <a> tidak underline */
+}
+
+.btn-ungu:hover {
+    background-color: #6f64a3;
+    color: #fff;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

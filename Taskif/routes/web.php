@@ -30,5 +30,5 @@ Route::prefix('/tugas')->group(function() {
 
 # Manajemen Tugas
 Route::prefix('/manajemen')->group(function() {
-    Route::get('/index', [TaskController::class, ''])
+    Route::get('/list', [TaskController::class, 'list'])->name('manajemen.list');
 });
