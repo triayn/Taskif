@@ -7,9 +7,27 @@
         <h1 class="h3 mb-0 text-gray-800">Manajemen Tugas</h1>
     </div>
 
+    {{-- Alert Success --}}
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{ session('success') }}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    {{-- Alert Error --}}
+    @if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <div>{{ session('error') }}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <div class="col-lg-4 mb-4 ms-auto">
         <div class="card shadow">
-            <!-- Card Header - Dropdown -->
+            <!-- Card Header -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-ungu">
                 <h6 class="m-0 font-weight-bold text-white">Kategori</h6>
                 <div class="dropdown no-arrow">
@@ -22,8 +40,11 @@
                         <li>
                             <h6 class="dropdown-header">Aksi</h6>
                         </li>
-                        <li><a class="dropdown-item" href="#">Tambah</a></li>
-                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalTambahKategori">
+                                Tambah
+                            </a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -46,6 +67,31 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Kategori -->
+    <div class="modal fade" id="modalTambahKategori" tabindex="-1" aria-labelledby="modalTambahKategoriLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{ route('category.store') }}" method="POST">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header bg-ungu text-white">
+                        <h5 class="modal-title" id="modalTambahKategoriLabel">Tambah Kategori</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="namaKategori" class="form-label">Nama Kategori</label>
+                            <input type="text" class="form-control" id="namaKategori" name="name" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn bg-ungu text-white">Simpan</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

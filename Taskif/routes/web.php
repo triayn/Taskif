@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,8 @@ Route::prefix('/tugas')->group(function() {
 # Manajemen Tugas
 Route::prefix('/manajemen')->group(function() {
     Route::get('/list', [TaskController::class, 'list'])->name('manajemen.list');
+});
+
+Route::prefix('/kategori')->group(function() {
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
 });
