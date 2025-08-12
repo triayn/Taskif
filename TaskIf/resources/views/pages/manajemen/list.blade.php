@@ -48,7 +48,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Hapus</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalHapusKategori">
+                                Hapus
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -89,6 +93,38 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                         <button type="submit" class="btn bg-ungu text-white">Simpan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Hapus Kategori -->
+    <div class="modal fade" id="modalHapusKategori" tabindex="-1" aria-labelledby="modalHapusKategoriLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{ route('category.destroy') }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                    <div class="modal-header modal-header-red">
+                        <h5 class="modal-title">Hapus Kategori</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="kategoriHapus" class="form-label">Pilih Kategori</label>
+                            <select class="form-select" id="kategoriHapus" name="id" required>
+                                <option value="" disabled selected>-- Pilih Kategori --</option>
+                                @foreach ($category as $kategori)
+                                <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p class="text-danger"><small>Data yang dihapus tidak dapat dikembalikan!</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </form>

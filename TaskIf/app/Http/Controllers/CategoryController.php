@@ -23,4 +23,17 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', 'Gagal menambahkan kategori.');
         }
     }
+
+    public function destroy(Request $request) 
+    {
+        $kategori = category::find($request->id);
+        
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori tidak ditemukan');
+        }
+
+        $kategori->delete();
+
+        return redirect()->back()->with('success', 'Kategori berhasil dihapus');
+    }
 }

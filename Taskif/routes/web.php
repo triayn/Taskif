@@ -36,4 +36,5 @@ Route::prefix('/manajemen')->group(function() {
 
 Route::prefix('/kategori')->group(function() {
     Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::delete('/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 });

@@ -55,6 +55,17 @@
             background-color: var(--hitam) !important;
         }
     </style>
+    <style>
+        :root {
+            --primary-red: #dc4f50;
+            /* contoh merah custom sesuai project kamu */
+        }
+
+        .modal-header-red {
+            background-color: var(--primary-red);
+            color: white;
+        }
+    </style>
 </head>
 
 <body id="page-top">
