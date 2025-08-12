@@ -59,6 +59,12 @@
 
             <!-- Card Body -->
             <div class="card-body">
+                @if ($category->isEmpty())
+                <p class="text-muted text-center">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Tambahkan kategori untuk membuat tugas
+                </p>
+                @else
                 <table id="state-saving-rowtable" class="table table-striped activate-select dt-responsive nowrap w-100">
                     <tbody>
                         @php $i = 1; @endphp
@@ -70,6 +76,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                @endif
             </div>
         </div>
     </div>
@@ -92,7 +99,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn bg-ungu text-white">Simpan</button>
+                        <button type="submit" class="btn btn-success text-white">Simpan</button>
                     </div>
                 </div>
             </form>
@@ -106,7 +113,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-content">
-                    <div class="modal-header modal-header-red">
+                    <div class="modal-header bg-ungu text-white">
                         <h5 class="modal-title">Hapus Kategori</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -137,7 +144,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane show active" id="state-saving-preview">
-                            <a href="#" class="btn btn-primary btn-sm" style="margin-bottom: 1.5em;">
+                            <a href="{{ route('manajemen.create') }}" class="btn btn-primary btn-sm" style="margin-bottom: 1.5em;">
                                 <i class="fas fa-fw fa-plus"></i> Tambah Tugas
                             </a>
                             <table id="state-saving-rowtable" class="table table-striped activate-select dt-responsive nowrap w-100">
@@ -153,7 +160,7 @@
 
                                 <tbody>
                                     @php $i = 1; @endphp
-                                    @foreach ($data as $row)
+                                    @forelse ($data as $row)
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $row->due_date }}</td>
@@ -170,17 +177,21 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-info"><i class="fas fa-fw fa-eye"></i> </a>
-                                            <a href="#" class="btn btn-success">
-                                                <i class="fas fa-fw fa-pen"></i>
-                                            </a>
+                                            <a href="#" class="btn btn-info"><i class="fas fa-fw fa-eye"></i></a>
+                                            <a href="#" class="btn btn-success"><i class="fas fa-fw fa-pen"></i></a>
                                             <!-- Button Hapus dengan Modal -->
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#">
                                                 <i class="fas fa-fw fa-trash"></i>
                                             </button>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="5" class="text-center text-ungu fw-bold">
+                                            <i class="fas fa-info-circle me-1"></i> Belum ada data tugas
+                                        </td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
 
                             </table>

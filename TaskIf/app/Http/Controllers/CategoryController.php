@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -15,12 +16,13 @@ class CategoryController extends Controller
 
         try {
             Category::create([
+                'user_id' => Auth::id(),
                 'name' => $request->name
             ]);
 
             return redirect()->back()->with('success', 'Kategori berhasil ditambahkan.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Gagal menambahkan kategori.');
+            return redirect()->back()->with('error', 'Gagal menambahkan kategori.' . $e->getMessage());
         }
     }
 

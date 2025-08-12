@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("ALTER TABLE tugas MODIFY status ENUM('menunggu', 'proses', 'selesai', 'terlambat') DEFAULT 'menunggu'");
+        DB::statement("ALTER TABLE tasks MODIFY status ENUM('menunggu', 'proses', 'selesai', 'terlambat') DEFAULT 'menunggu'");
     }
 
     /**
@@ -20,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("ALTER TABLE tugas MODIFY status ENUM('menunggu', 'proses', 'selesai') DEFAULT 'menunggu'");
+        DB::statement("ALTER TABLE tasks MODIFY status ENUM('menunggu', 'proses', 'selesai') DEFAULT 'menunggu'");
     }
 };

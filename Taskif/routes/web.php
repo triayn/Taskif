@@ -32,6 +32,8 @@ Route::prefix('/tugas')->group(function() {
 # Manajemen Tugas
 Route::prefix('/manajemen')->group(function() {
     Route::get('/list', [TaskController::class, 'list'])->name('manajemen.list');
+    Route::get('/create', [TaskController::class, 'create'])->name('manajemen.create');
+    Route::post('/store', [TaskController::class, 'store'])->name('menajemen.store');
 });
 
 Route::prefix('/kategori')->group(function() {

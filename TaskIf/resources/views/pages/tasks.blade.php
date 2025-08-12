@@ -14,6 +14,14 @@
             $warnaKartu = ['bg-ungu', 'bg-hijau', 'bg-biru', 'bg-kuning', 'bg-merah', 'bg-hitam'];
             @endphp
 
+            @if ($data->isEmpty())
+            <div class="col-12">
+                <div class="alert bg-ungu text-white d-flex align-items-center" role="alert">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <span>Anda belum memiliki tugas yang perlu diselesaikan</span>
+                </div>
+            </div>
+            @else
             @foreach ($data as $index => $task)
             <div class="col-lg-3 mb-3">
                 <div class="card shadow">
@@ -54,15 +62,18 @@
                 </div>
             </div>
             @endforeach
+            @endif
 
         </div>
     </div>
+
 </div>
 
 <style>
     .transition-icon {
         transition: transform 0.3s ease;
     }
+
     a[aria-expanded="true"] .transition-icon {
         transform: rotate(180deg);
     }
