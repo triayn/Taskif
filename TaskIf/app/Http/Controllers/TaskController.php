@@ -6,6 +6,9 @@ use App\Models\category;
 use App\Models\task as ModelsTask;
 use App\Models\TaskNote;
 use Illuminate\Console\View\Components\Task;
+use Illuminate\Contracts\Database\ModelIdentifier;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +35,7 @@ class TaskController extends Controller
     public function create()
     {
         $kategori = category::where('user_id', Auth::id())->get();
+
 
         return view('pages.manajemen.create', compact('kategori'));
     }
@@ -69,5 +73,13 @@ class TaskController extends Controller
                 ->back()
                 ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+    }
+
+    public function show($id)
+    {
+        $task = ModelsTask::with('category')->findOrFail($id);
+        $notes = ModelsTask::with('notes')->findOrFail($id);
+
+        return view('pages.manajemen.show', compact('task', 'notes'));
     }
 }

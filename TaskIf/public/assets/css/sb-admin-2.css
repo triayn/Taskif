@@ -84,6 +84,21 @@
     color: #fff;
 }
 
+.task-card {
+    background-color: var(--hijau);
+    color: white; /* biar teks tetap jelas */
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.notes-card {
+    background-color: var(--kuning);
+    color: black;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

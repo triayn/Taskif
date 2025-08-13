@@ -138,6 +138,7 @@
         </div>
     </div>
 
+    <!-- Tabel Data Tugas -->
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -177,8 +178,12 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-info"><i class="fas fa-fw fa-eye"></i></a>
-                                            <a href="#" class="btn btn-success"><i class="fas fa-fw fa-pen"></i></a>
+                                            <a href="{{ route('manajemen.show', $row->id) }}" class="btn btn-info">
+                                                <i class="fas fa-fw fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-success">
+                                                <i class="fas fa-fw fa-pen"></i>
+                                            </a>
                                             <!-- Button Hapus dengan Modal -->
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#">
                                                 <i class="fas fa-fw fa-trash"></i>
@@ -201,5 +206,6 @@
             </div> <!-- end card -->
         </div><!-- end col-->
     </div>
+
 </div>
 @endsection

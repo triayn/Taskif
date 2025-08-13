@@ -31,6 +31,6 @@ class task extends Model
 
     public function notes()
     {
-        return $this->hasMany('TaskNote::class');
+        return $this->hasMany(TaskNote::class);
     }
 }
