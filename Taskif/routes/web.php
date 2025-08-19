@@ -35,6 +35,9 @@ Route::prefix('/manajemen')->group(function() {
     Route::get('/create', [TaskController::class, 'create'])->name('manajemen.create');
     Route::post('/store', [TaskController::class, 'store'])->name('manajemen.store');
     Route::get('/show/{id}', [TaskController::class, 'show'])->name('manajemen.show');
+    Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('manajemen.edit');
+    Route::put('/update/{id}', [TaskController::class, 'update'])->name('manajemen.update');
+    Route::delete('/{id}', [TaskController::class, 'destroy'])->name('manajemen.destroy');
 });
 
 Route::prefix('/kategori')->group(function() {

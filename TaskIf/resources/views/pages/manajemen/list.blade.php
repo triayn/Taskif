@@ -181,11 +181,11 @@
                                             <a href="{{ route('manajemen.show', $row->id) }}" class="btn btn-info">
                                                 <i class="fas fa-fw fa-eye"></i>
                                             </a>
-                                            <a href="#" class="btn btn-success">
+                                            <a href="{{ route('manajemen.edit', $row->id) }}" class="btn btn-success">
                                                 <i class="fas fa-fw fa-pen"></i>
                                             </a>
-                                            <!-- Button Hapus dengan Modal -->
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#">
+                                            <!-- Button Hapus -->
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapusTugas{{ $row->id }}">
                                                 <i class="fas fa-fw fa-trash"></i>
                                             </button>
                                         </td>
@@ -205,6 +205,30 @@
                 </div> <!-- end card body-->
             </div> <!-- end card -->
         </div><!-- end col-->
+    </div>
+
+    <!-- Modal Hapus Tugas -->
+    <div class="modal fade" id="modalHapusTugas{{ $row->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="{{ route('manajemen.destroy', $row->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">Konfirmasi Hapus</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah anda yakin ingin menghapus tugas <strong>{{ $row->title }}</strong>?
+                        <p class="text-danger mt-2"><small>Data yang dihapus tidak dapat dikembalikan.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
 </div>

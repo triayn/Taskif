@@ -26,7 +26,7 @@ class TaskController extends Controller
     {
         $userId = Auth::id();
 
-        $data = ModelsTask::where('user_id', $userId)->get();
+        $data = ModelsTask::where('user_id', $userId)->whereIn('status', ['menunggu', 'proses'])->get();
         $category = category::where('user_id', $userId)->get();
 
         return view('pages.manajemen.list', compact('data', 'category'));
@@ -81,5 +81,44 @@ class TaskController extends Controller
         $notes = ModelsTask::with('notes')->findOrFail($id);
 
         return view('pages.manajemen.show', compact('task', 'notes'));
+    }
+
+    public function edit($id)
+    {
+        $task = ModelsTask::findOrFail($id);
+
+        return view('pages.manajemen.edit', compact('task'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'status' => 'required|string',
+            'due_date' => 'required|date',
+        ]);
+
+        $task = ModelsTask::findOrFail($id);
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'status' => $request->status,
+            'due_date' => $request->due_date,
+        ]);
+
+        return redirect()->route('manajemen.list')->with('success', 'Tugas berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $task = ModelsTask::findOrFail($id);
+            $task->delete();
+
+            return redirect()->route('manajemen.list')->with('success', 'Tugas "' . $task->title . '" berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('manajemen.list')->with('error', 'Gagal menghapus tugas.');
+        }
     }
 }
